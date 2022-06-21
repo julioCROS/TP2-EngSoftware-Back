@@ -9,8 +9,7 @@ exports.get = (req, res, next) => {
       res.status(500).json({
         message: err.message
       });
-    }
-    );
+    });
 }
 
 exports.getById = (req, res, next) => {
@@ -21,7 +20,7 @@ exports.getById = (req, res, next) => {
       res.status(500).json({
         message: err.message
       });
-    })
+    });
 }
 
 
@@ -39,15 +38,14 @@ exports.post = (req, res, next) => {
     }).catch(err => {
       if (err.code === 11000) {
         res.status(409).json({
-          message: 'Email já existe'
+          message: 'Email já existente'
         });
       } else {
         res.status(500).json({
           message: err.message
         });
       }
-    }
-    );
+    });
 }
 
 exports.put = (req, res, next) => {
