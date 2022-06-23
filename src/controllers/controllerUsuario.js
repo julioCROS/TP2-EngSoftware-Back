@@ -1,10 +1,8 @@
 const mongoose = require('mongoose');
 const Usuario = mongoose.model('Usuario');
-const dotenv = require('dotenv');
-dotenv.config();
 
-exports.get = async(req, res, next) => {
-  await Usuario.find()
+exports.get = (req, res) => {
+   Usuario.find()
     .then(result => {
       res.status(200).json(result);
     }).catch(err => {
@@ -14,8 +12,8 @@ exports.get = async(req, res, next) => {
     });
 }
 
-exports.getById = async(req, res, next) => {
-  await Usuario.findById(req.params.id)
+exports.getById = (req, res) => {
+  Usuario.findById(req.params.id)
     .then(result => {
       res.status(200).json(result);
     }).catch(err => {
@@ -26,9 +24,9 @@ exports.getById = async(req, res, next) => {
 }
 
 
-exports.post = async(req, res, next) => {
-  console.log(req.body);
-  await Usuario.create(req.body)
+exports.post = (req, res) => {
+  const novoUsuario = new Usuario(req.body);
+  novoUsuario.save(req.body)
     .then(result => {
       res.status(201).json({
         message: 'Usuário criado com sucesso',
@@ -47,11 +45,9 @@ exports.post = async(req, res, next) => {
     });
 }
 
-exports.put = async(req, res, next) => {
-  await Usuario.findByIdAndUpdate(req.params.id, {
-    email: req.body.email,
-    senha: req.body.senha
-  }).then(result => {
+exports.put = (req, res) => {
+  Usuario.findByIdAndUpdate(req.params.id, req.body)
+    .then(result => {
     res.status(200).json(result);
   }).catch(err => {
     res.status(500).json({
@@ -60,10 +56,10 @@ exports.put = async(req, res, next) => {
   });
 }
 
-exports.delete = async(req, res, next) => {
-  await Usuario.findByIdAndRemove(req.params.id)
+exports.delete = (req, res) => {
+  Usuario.findByIdAndRemove(req.params.id)
     .then(result => {
-      res.status(200).json(result);
+      res.status(200).json(req.body);
     }).catch(err => {
       res.status(500).json({
         message: err.message
