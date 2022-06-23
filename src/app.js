@@ -11,7 +11,7 @@ const router = express.Router();
 mongoose.connect(process.env.DB_CONNECTION.toString());
 
 //Carregando models
-const Usuario = require('./models/usuario');
+const Usuario = require('./models/usuario');/*
 const Aluno = require('./models/aluno');
 const Empregado = require('./models/empregado');
 const CartaoDeCredito = require('./models/cartaoDeCredito');
@@ -24,11 +24,11 @@ const Ritmo = require('./models/ritmo');
 const Natacao = require('./models/natacao');
 const Crossfit = require('./models/crossfit');
 const Spinning = require('./models/spinning');
-const Musculacao = require('./models/musculacao');
+const Musculacao = require('./models/musculacao');*/
 
 //Carregando rotas
 const rotaIndex = require('./routes/rotaIndex');
-const rotaUsuario = require('./routes/rotaUsuario.js');
+const rotaUsuario = require('./routes/rotaUsuario.js');/*
 const rotaAluno = require('./routes/rotaAluno.js');
 const rotaEmpregado = require('./routes/rotaEmpregado.js');
 const rotaCartaoDeCredito = require('./routes/rotaCartaoDeCredito.js');
@@ -41,19 +41,11 @@ const rotaRitmo = require('./routes/rotaRitmo');
 const rotaNatacao = require('./routes/rotaNatacao');
 const rotaCrossfit = require('./routes/rotaCrossfit');
 const rotaSpinning = require('./routes/rotaSpinning');
-const rotaMusculacao = require('./routes/rotaMusculacao');
-
-// Habilita o CORS
-app.use(function (req, res, next) {
-  res.header("Access-Control-Allow-Origin", "*");
-  res.header("Access-Control-Allow-Headers", "Origin, X-Requested-With, Content-Type, Accept, x-access-token");
-  res.header("Access-Control-Allow-Methods", "GET, POST, PUT, DELETE, OPTIONS");
-  next();
-});
+const rotaMusculacao = require('./routes/rotaMusculacao');*/
 
 // Rotas
 app.use('/', rotaIndex);
-app.use('/usuarios', rotaUsuario);
+app.use('/usuarios', rotaUsuario);/*
 app.use('/alunos', rotaAluno);
 app.use('/empregados', rotaEmpregado);
 app.use('/cartoes-de-credito', rotaCartaoDeCredito);
@@ -66,6 +58,6 @@ app.use('/ritmo', rotaRitmo);
 app.use('/natacao', rotaNatacao);
 app.use('/crossfit', rotaCrossfit);
 app.use('/spinning', rotaSpinning);
-app.use('/musculacao', rotaMusculacao);
+app.use('/musculacao', rotaMusculacao);*/
 
 module.exports = app;
