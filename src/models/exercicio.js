@@ -1,7 +1,7 @@
 const mongoose = require('mongoose');
 const Schema = mongoose.Schema;
 
-const Exercicios = new Schema({
+const Exercicio = new Schema({
   repeticoes: {
     type: Number,
     required: true,
@@ -17,4 +17,4 @@ const Exercicios = new Schema({
   }
 });
 
-module.exports = mongoose.model('Exercicio', Exercicios)
+module.exports = mongoose.model('Exercicio', Exercicio)

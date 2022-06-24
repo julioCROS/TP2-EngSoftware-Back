@@ -1,45 +1,44 @@
 const mongoose = require('mongoose');
-const Exercicio = mongoose.model('Exercicio');
+const Plano = mongoose.model('Plano');
 
 exports.get = (req, res) => {
-  Exercicio.find()
-    .populate('tipoExercicio')
-    .then(result => {
-      res.status(200).json(result);
-    }).catch(err => {
-      res.status(500).json({
-        message: err.message
-      });
-    });
-}
-
-exports.getById = (req, res) => {
-  Exercicio.findById(req.params.id)
-    .populate('tipoExercicio')
+  Plano.find()
+    .populate('aulas')
     .then(result => {
       res.status(200).json(result);
     }).catch(err => {
       res.status(500).json({
         message: err.message
       })
-    })
+    });
 }
 
-exports.post = (req, res) => {
-  const novoExercicio = new Exercicio(req.body);
-  novoExercicio.save()
+exports.getById = (req, res) => {
+  Plano.findById(req.params.id)
     .then(result => {
-      res.status(201).json(result);
+      res.status(200).json(result);
     }).catch(err => {
       res.status(500).json({
         message: err.message
-      });
+      })
+    });
+}
+
+exports.post = (req, res) => {
+  const novoPlano = new Plano(req.body);
+  novoPlano.save()
+    .then(result => {
+      res.status(200).json(result);
+    }).catch(err => {
+      res.status(500).json({
+        message: err.message
+      })
     });
 }
 
 exports.put = (req, res) => {
-  Exercicio.findByIdAndUpdate(req.params.id, req.body)
-    .then(result =>{
+  Plano.findByIdAndUpdate(req.params.id, req.body)
+    .then(result => {
       res.status(200).json(req.body);
     }).catch(err => {
       res.status(500).json({
@@ -49,12 +48,12 @@ exports.put = (req, res) => {
 }
 
 exports.delete = (req, res) => {
-  Exercicio.findByIdAndRemove(req.params.id)
+  Plano.findByIdAndRemove(req.params.id)
     .then(result => {
-      res.status(200).json(result)
-    }).catch(err =>{
+      res.status(200).json(result);
+    }).catch(err => {
       res.status(500).json({
         message: err.message
       })
-    });
+    })
 }

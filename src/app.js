@@ -19,13 +19,10 @@ const CartaoDeCredito = require('./models/cartaoDeCredito');
 const Exame = require('./models/exame');
 const Treino = require('./models/treino');*/
 const Exercicios = require('./models/exercicio');
-const TipoExercicio = require('./models/tipoExercicio');/*
-const Plano = require('./models/plano');/*
-const Ritmo = require('./models/ritmo');
-const Natacao = require('./models/natacao');
-const Crossfit = require('./models/crossfit');
-const Spinning = require('./models/spinning');
-const Musculacao = require('./models/musculacao');*/
+const TipoExercicio = require('./models/tipoExercicio');
+const Plano = require('./models/plano');
+const Aula = require('./models/aula');
+
 
 //Carregando rotas
 const rotaIndex = require('./routes/rotaIndex');
@@ -36,13 +33,10 @@ const rotaCartaoDeCredito = require('./routes/rotaCartaoDeCredito.js');
 const rotaExame = require('./routes/rotaExame');
 const rotaTreino = require('./routes/rotaTreino');*/
 const rotaExercicio = require('./routes/rotaExercicio');
-const rotaTipoExercicio = require('./routes/rotaTipoExercicio');/*
+const rotaTipoExercicio = require('./routes/rotaTipoExercicio');
 const rotaPlano = require('./routes/rotaPlano');
-const rotaRitmo = require('./routes/rotaRitmo');
-const rotaNatacao = require('./routes/rotaNatacao');
-const rotaCrossfit = require('./routes/rotaCrossfit');
-const rotaSpinning = require('./routes/rotaSpinning');
-const rotaMusculacao = require('./routes/rotaMusculacao');*/
+const rotaAula = require('./routes/rotaAula');
+
 
 // Rotas
 app.use('/', rotaIndex);
@@ -52,13 +46,10 @@ app.use('/empregados', rotaEmpregado);
 app.use('/cartoes-de-credito', rotaCartaoDeCredito);
 app.use('/exames', rotaExame);
 app.use('/treinos', rotaTreino);*/
-app.use('/exercicio', rotaExercicio);
-app.use('/tipoexercicio', rotaTipoExercicio);/*
-app.use('/plano', rotaPlano);
-app.use('/ritmo', rotaRitmo);
-app.use('/natacao', rotaNatacao);
-app.use('/crossfit', rotaCrossfit);
-app.use('/spinning', rotaSpinning);
-app.use('/musculacao', rotaMusculacao);*/
+app.use('/exercicios', rotaExercicio);
+app.use('/tiposexercicio', rotaTipoExercicio);
+app.use('/planos', rotaPlano);
+app.use('/aulas', rotaAula);
+
 
 module.exports = app;
