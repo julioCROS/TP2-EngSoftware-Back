@@ -1,8 +1,8 @@
 const mongoose = require('mongoose');
 const Usuario = mongoose.model('Usuario');
 
-exports.get = (req, res) => {
-   Usuario.find()
+exports.get = async (req, res) => {
+   await Usuario.find()
     .then(result => {
       res.status(200).json(result);
     }).catch(err => {
@@ -12,8 +12,8 @@ exports.get = (req, res) => {
     });
 }
 
-exports.getById = (req, res) => {
-  Usuario.findById(req.params.id)
+exports.getById = async (req, res) => {
+  await Usuario.findById(req.params.id)
     .then(result => {
       res.status(200).json(result);
     }).catch(err => {
@@ -24,9 +24,9 @@ exports.getById = (req, res) => {
 }
 
 
-exports.post = (req, res) => {
+exports.post = async (req, res) => {
   const novoUsuario = new Usuario(req.body);
-  novoUsuario.save(req.body)
+  await novoUsuario.save(req.body)
     .then(result => {
       res.status(201).json({
         message: 'Usuário criado com sucesso',
@@ -45,8 +45,8 @@ exports.post = (req, res) => {
     });
 }
 
-exports.put = (req, res) => {
-  Usuario.findByIdAndUpdate(req.params.id, req.body)
+exports.put = async (req, res) => {
+  await Usuario.findByIdAndUpdate(req.params.id, req.body)
     .then(result => {
     res.status(200).json(result);
   }).catch(err => {
@@ -56,8 +56,8 @@ exports.put = (req, res) => {
   });
 }
 
-exports.delete = (req, res) => {
-  Usuario.findByIdAndRemove(req.params.id)
+exports.delete = async (req, res) => {
+  await Usuario.findByIdAndRemove(req.params.id)
     .then(result => {
       res.status(200).json(req.body);
     }).catch(err => {

@@ -1,8 +1,8 @@
 const mongoose = require('mongoose');
 const Plano = mongoose.model('Plano');
 
-exports.get = (req, res) => {
-  Plano.find()
+exports.get = async (req, res) => {
+  await Plano.find()
     .populate('aulas')
     .then(result => {
       res.status(200).json(result);
@@ -13,8 +13,8 @@ exports.get = (req, res) => {
     });
 }
 
-exports.getById = (req, res) => {
-  Plano.findById(req.params.id)
+exports.getById = async (req, res) => {
+  await Plano.findById(req.params.id)
     .then(result => {
       res.status(200).json(result);
     }).catch(err => {
@@ -24,9 +24,9 @@ exports.getById = (req, res) => {
     });
 }
 
-exports.post = (req, res) => {
+exports.post = async (req, res) => {
   const novoPlano = new Plano(req.body);
-  novoPlano.save()
+  await novoPlano.save()
     .then(result => {
       res.status(200).json(result);
     }).catch(err => {
@@ -36,8 +36,8 @@ exports.post = (req, res) => {
     });
 }
 
-exports.put = (req, res) => {
-  Plano.findByIdAndUpdate(req.params.id, req.body)
+exports.put = async (req, res) => {
+  await Plano.findByIdAndUpdate(req.params.id, req.body)
     .then(result => {
       res.status(200).json(req.body);
     }).catch(err => {
@@ -47,8 +47,8 @@ exports.put = (req, res) => {
     });
 }
 
-exports.delete = (req, res) => {
-  Plano.findByIdAndRemove(req.params.id)
+exports.delete = async (req, res) => {
+  await Plano.findByIdAndRemove(req.params.id)
     .then(result => {
       res.status(200).json(result);
     }).catch(err => {

@@ -1,8 +1,8 @@
 const mongoose = require('mongoose');
 const TipoExercicio = mongoose.model('TipoExercicio');
 
-exports.get = (req, res) => {
-  TipoExercicio.find()
+exports.get = async (req, res) => {
+  await TipoExercicio.find()
     .then(result => {
       res.status(200).json(result);
     }).catch(err => {
@@ -12,8 +12,8 @@ exports.get = (req, res) => {
     });
 }
 
-exports.getById = (req, res) => {
-  TipoExercicio.findById(req.params.id)
+exports.getById = async (req, res) => {
+  await TipoExercicio.findById(req.params.id)
     .then(result => {
       res.status(200).json(result);
     }).catch(err => {
@@ -23,9 +23,9 @@ exports.getById = (req, res) => {
     });
 }
 
-exports.post = (req, res) => {
+exports.post = async (req, res) => {
   const novoTipoExercicio = new TipoExercicio(req.body)
-  novoTipoExercicio.save()
+  await novoTipoExercicio.save()
     .then(result => {
       res.status(201).json(result);
     }).catch(err => {
@@ -35,8 +35,8 @@ exports.post = (req, res) => {
     });
 }
 
-exports.put = (req, res) => {
-  TipoExercicio.findByIdAndUpdate(req.params.id, req.body)
+exports.put = async (req, res) => {
+  await TipoExercicio.findByIdAndUpdate(req.params.id, req.body)
     .then(result => {
       res.status(200).json(result);
     }).catch(err => {
@@ -46,8 +46,8 @@ exports.put = (req, res) => {
     });
 }
 
-exports.delete = (req, res) => {
-  TipoExercicio.findByIdAndRemove(req.params.id)
+exports.delete = async (req, res) => {
+  await TipoExercicio.findByIdAndRemove(req.params.id)
     .then(result => {
       res.status(200).json(result);
     }).catch(err => {

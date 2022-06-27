@@ -1,8 +1,8 @@
 const mongoose = require('mongoose');
 const Aula = mongoose.model('Aula');
 
-exports.get = (req, res) => {
-  Aula.find()
+exports.get = async (req, res) => {
+  await Aula.find()
     .then(result => {
       res.status(200).json(result);
     }).catch(err => {
@@ -12,8 +12,8 @@ exports.get = (req, res) => {
     });
 }
 
-exports.getById = (req, res) => {
-  Aula.findById(req.param.id)
+exports.getById = async (req, res) => {
+  await Aula.findById(req.param.id)
     .then(result => {
       res.status(200).json(result);
     }).catch(err => {
@@ -23,9 +23,9 @@ exports.getById = (req, res) => {
     });
 }
 
-exports.post = (req, res) => {
+exports.post = async (req, res) => {
   const novaAula = new Aula(req.body);
-  novaAula.save()
+  await novaAula.save()
     .then(result => {
       res.status(201).json(result);
     }).catch(err => {
@@ -35,8 +35,8 @@ exports.post = (req, res) => {
     });
 }
 
-exports.put = (req, res) => {
-  Aula.findByIdAndUpdate(req.params.id, req.body)
+exports.put = async (req, res) => {
+  await Aula.findByIdAndUpdate(req.params.id, req.body)
     .then(result => {
       res.status(200).json(req.body);
     }).catch(err => {
@@ -46,8 +46,8 @@ exports.put = (req, res) => {
     });
 }
 
-exports.delete = (req, res) => {
-  Aula.findByIdAndRemove(req.params.id)
+exports.delete = async (req, res) => {
+  await Aula.findByIdAndRemove(req.params.id)
     .then(result => {
       res.status(200).json(result);
     }).catch(err => {
