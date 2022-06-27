@@ -27,7 +27,7 @@ exports.getById = (req, res) => {
 
 exports.post = (req, res) => {
   const novoExercicio = new Exercicio(req.body);
-  const novoExercicioFind = await Exercicio.find({tipoExercicio: req.body.tipoExercicio, series: req.body.series, repeticoes: req.body.repeticoes});
+  const novoExercicioFind = Exercicio.find({tipoExercicio: req.body.tipoExercicio, series: req.body.series, repeticoes: req.body.repeticoes});
   if (novoExercicioFind.length > 0) {
     res.status(200).send(novoExercicioFind[0]);
   } else {
