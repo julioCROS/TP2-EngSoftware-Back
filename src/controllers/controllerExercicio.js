@@ -27,14 +27,19 @@ exports.getById = (req, res) => {
 
 exports.post = (req, res) => {
   const novoExercicio = new Exercicio(req.body);
-  novoExercicio.save()
-    .then(result => {
-      res.status(201).json(result);
-    }).catch(err => {
-      res.status(500).json({
-        message: err.message
+  const novoExercicioFind = await Exercicio.find({tipoExercicio: req.body.tipoExercicio, series: req.body.series, repeticoes: req.body.repeticoes});
+  if (novoExercicioFind.length > 0) {
+    res.status(200).send(novoExercicioFind[0]);
+  } else {
+    novoExercicio.save()
+      .then(result => {
+        res.status(201).json(result);
+      }).catch(err => {
+        res.status(500).json({
+          message: err.message
+        });
       });
-    });
+  }
 }
 
 exports.put = (req, res) => {
