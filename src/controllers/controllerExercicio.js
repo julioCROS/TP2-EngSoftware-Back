@@ -1,8 +1,8 @@
 const mongoose = require('mongoose');
 const Exercicio = mongoose.model('Exercicio');
 
-exports.get = (req, res) => {
-  Exercicio.find()
+exports.get = async (req, res) => {
+  await Exercicio.find()
     .populate('tipoExercicio')
     .then(result => {
       res.status(200).json(result);
@@ -13,8 +13,8 @@ exports.get = (req, res) => {
     });
 }
 
-exports.getById = (req, res) => {
-  Exercicio.findById(req.params.id)
+exports.getById = async (req, res) => {
+  await Exercicio.findById(req.params.id)
     .populate('tipoExercicio')
     .then(result => {
       res.status(200).json(result);
@@ -25,11 +25,12 @@ exports.getById = (req, res) => {
     })
 }
 
-exports.post = (req, res) => {
+exports.post = async (req, res) => {
   const novoExercicio = new Exercicio(req.body);
-  const novoExercicioFind = Exercicio.find({tipoExercicio: req.body.tipoExercicio, series: req.body.series, repeticoes: req.body.repeticoes});
-  if (novoExercicioFind.length > 0) {
-    res.status(200).send(novoExercicioFind[0]);
+  const novoExercicioFind = await Exercicio.findOne({tipoExercicio: req.body.tipoExercicio, series: req.body.series, repeticoes: req.body.repeticoes});
+  
+  if (novoExercicioFind != null) {
+    res.status(200).send(novoExercicioFind);
   } else {
     novoExercicio.save()
       .then(result => {
@@ -42,8 +43,8 @@ exports.post = (req, res) => {
   }
 }
 
-exports.put = (req, res) => {
-  Exercicio.findByIdAndUpdate(req.params.id, req.body)
+exports.put = async (req, res) => {
+  await Exercicio.findByIdAndUpdate(req.params.id, req.body)
     .then(result =>{
       res.status(200).json(req.body);
     }).catch(err => {
@@ -53,8 +54,8 @@ exports.put = (req, res) => {
     });
 }
 
-exports.delete = (req, res) => {
-  Exercicio.findByIdAndRemove(req.params.id)
+exports.delete = async (req, res) => {
+  await Exercicio.findByIdAndRemove(req.params.id)
     .then(result => {
       res.status(200).json(result)
     }).catch(err =>{
