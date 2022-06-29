@@ -10,9 +10,9 @@ const Treino = new Schema({
     type: String,
     required: true
   },
-  exames: [{
+  exercicios: [{
     type: Schema.Types.ObjectId,
-    ref: 'Exame',
+    ref: 'Exercicios',
     required: true
   }],
 });
