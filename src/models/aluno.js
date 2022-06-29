@@ -24,12 +24,12 @@ const Aluno = new Schema({
   }],
   planos: [{
     type: Schema.Types.ObjectId,
-    ref: 'Planos',
+    ref: 'Plano',
     required: true
   }],
   exames: [{
     type: Schema.Types.ObjectId,
-    ref: 'Exames',
+    ref: 'Exame',
     required: true
   }],
 });
