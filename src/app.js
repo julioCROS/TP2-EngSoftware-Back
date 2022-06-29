@@ -20,10 +20,10 @@ mongoose.connect(process.env.DB_CONNECTION.toString());
 //Carregando models
 const Usuario = require('./models/usuario');
 const Aluno = require('./models/aluno');
+const Exame = require('./models/exame');
 /*
 const Empregado = require('./models/empregado');
 const CartaoDeCredito = require('./models/cartaoDeCredito');
-const Exame = require('./models/exame');
 const Treino = require('./models/treino');
 */
 const Exercicios = require('./models/exercicio');
@@ -36,10 +36,10 @@ const Aula = require('./models/aula');
 const rotaIndex = require('./routes/rotaIndex');
 const rotaUsuario = require('./routes/rotaUsuario');
 const rotaAluno = require('./routes/rotaAluno.js');
+const rotaExame = require('./routes/rotaExame');
 /*
 const rotaEmpregado = require('./routes/rotaEmpregado.js');
 const rotaCartaoDeCredito = require('./routes/rotaCartaoDeCredito.js');
-const rotaExame = require('./routes/rotaExame');
 const rotaTreino = require('./routes/rotaTreino');
 */
 const rotaExercicio = require('./routes/rotaExercicio');
@@ -52,10 +52,10 @@ const rotaAula = require('./routes/rotaAula');
 app.use('/', rotaIndex);
 app.use('/usuarios', rotaUsuario);
 app.use('/alunos', rotaAluno);
+app.use('/exames', rotaExame);
 /*
 app.use('/empregados', rotaEmpregado);
 app.use('/cartoes-de-credito', rotaCartaoDeCredito);
-app.use('/exames', rotaExame);
 app.use('/treinos', rotaTreino);
 */
 app.use('/exercicios', rotaExercicio);
