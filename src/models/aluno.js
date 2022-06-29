@@ -19,7 +19,7 @@ const Aluno = new Schema({
   }],
   cartaoCred: [{
     type: Schema.Types.ObjectId,
-    ref: 'CartaoCredito',
+    ref: 'CartaoDeCredito',
     required: true
   }],
   planos: [{

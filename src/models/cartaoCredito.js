@@ -1,7 +1,7 @@
 const mongoose = require('mongoose');
 const Schema = mongoose.Schema;
 
-const CartaoCredito = new Schema({
+const CartaoDeCredito = new Schema({
   nome: {
     type: String,
     required: true
@@ -16,4 +16,4 @@ const CartaoCredito = new Schema({
   }
 });
 
-module.exports = mongoose.model('CartaoCredito', CartaoCredito);
+module.exports = mongoose.model('CartaoDeCredito', CartaoDeCredito);

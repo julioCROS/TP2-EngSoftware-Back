@@ -1,8 +1,8 @@
 const mongoose = require('mongoose');
-const CartaoCredito = mongoose.model('CartaoCredito');
+const CartaoDeCredito = mongoose.model('CartaoDeCredito');
 
 exports.get = async (req, res) => {
-  await CartaoCredito.find()
+  await CartaoDeCredito.find()
     .then(result => {
       res.status(200).json(result);
     }).catch(err => {
@@ -13,7 +13,7 @@ exports.get = async (req, res) => {
 }
 
 exports.getById = async (req, res) => {
-  await CartaoCredito.findById(req.param.id)
+  await CartaoDeCredito.findById(req.param.id)
     .then(result => {
       res.status(200).json(result);
     }).catch(err => {
@@ -24,8 +24,8 @@ exports.getById = async (req, res) => {
 }
 
 exports.post = async (req, res) => {
-  const novoCartaoCredito = new CartaoCredito(req.body);
-  await novoCartaoCredito.save()
+  const novoCartaoDeCredito = new CartaoDeCredito(req.body);
+  await novoCartaoDeCredito.save()
     .then(result => {
       res.status(201).json(result);
     }).catch(err => {
@@ -36,7 +36,7 @@ exports.post = async (req, res) => {
 }
 
 exports.put = async (req, res) => {
-  await CartaoCredito.findByIdAndUpdate(req.params.id, req.body)
+  await CartaoDeCredito.findByIdAndUpdate(req.params.id, req.body)
     .then(result => {
       res.status(200).json(req.body);
     }).catch(err => {
@@ -47,7 +47,7 @@ exports.put = async (req, res) => {
 }
 
 exports.delete = async (req, res) => {
-  await CartaoCredito.findByIdAndRemove(req.params.id)
+  await CartaoDeCredito.findByIdAndRemove(req.params.id)
     .then(result => {
       res.status(200).json(result);
     }).catch(err => {
