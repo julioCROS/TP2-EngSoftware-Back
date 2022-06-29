@@ -19,15 +19,15 @@ const Exame = new Schema({
     required: true
   }],
   pressaoArt: [{
-    type: Number,
+    type: String,
     required: true
   }],
   gorduraCorp: [{
-    type: Number,
+    type: String,
     required: true
   }],
   massMagra: [{
-    type: Number,
+    type: String,
     required: true
   }],
   IMC: [{
