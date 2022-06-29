@@ -23,9 +23,7 @@ const Aluno = require('./models/aluno');
 const Exame = require('./models/exame');
 const Empregado = require('./models/empregado');
 const CartaoDeCredito = require('./models/cartaoDeCredito');
-/*
 const Treino = require('./models/treino');
-*/
 const Exercicios = require('./models/exercicio');
 const TipoExercicio = require('./models/tipoExercicio');
 const Plano = require('./models/plano');
@@ -39,9 +37,7 @@ const rotaAluno = require('./routes/rotaAluno.js');
 const rotaExame = require('./routes/rotaExame');
 const rotaEmpregado = require('./routes/rotaEmpregado.js');
 const rotaCartaoCredito = require('./routes/rotaCartaoCredito.js');
-/*
 const rotaTreino = require('./routes/rotaTreino');
-*/
 const rotaExercicio = require('./routes/rotaExercicio');
 const rotaTipoExercicio = require('./routes/rotaTipoExercicio');
 const rotaPlano = require('./routes/rotaPlano');
@@ -55,9 +51,7 @@ app.use('/alunos', rotaAluno);
 app.use('/exames', rotaExame);
 app.use('/empregados', rotaEmpregado);
 app.use('/cartoescredito', rotaCartaoCredito);
-/*
 app.use('/treinos', rotaTreino);
-*/
 app.use('/exercicios', rotaExercicio);
 app.use('/tiposexercicio', rotaTipoExercicio);
 app.use('/planos', rotaPlano);
