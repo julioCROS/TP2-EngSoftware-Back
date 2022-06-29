@@ -26,7 +26,7 @@ const Exame = new Schema({
     type: String,
     required: true
   }],
-  massMagra: [{
+  massaMagra: [{
     type: String,
     required: true
   }],
