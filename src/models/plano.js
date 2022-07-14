@@ -7,7 +7,7 @@ const Plano = new Schema({
     required: true
   },
   preco: {
-    type: Number,
+    type: String,
     required: true
   },
   descricao: {

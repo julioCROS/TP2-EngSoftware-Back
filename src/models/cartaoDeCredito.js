@@ -7,11 +7,11 @@ const CartaoDeCredito = new Schema({
     required: true
   },
   numeroCartao: {
-    type: Number,
+    type: String,
     required: true
   },
   CVV: {
-    type: Number,
+    type: String,
     required: true
   }
 });

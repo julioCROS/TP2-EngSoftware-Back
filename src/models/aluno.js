@@ -15,7 +15,7 @@ const Aluno = new Schema({
     required: true
   },
   dataNasc: {
-    type: Date,
+    type: String,
   },
   cartaoCred: {
     type: Schema.Types.ObjectId,
