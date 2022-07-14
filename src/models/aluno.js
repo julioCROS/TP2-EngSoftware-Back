@@ -14,14 +14,14 @@ const Aluno = new Schema({
     type: String,
     required: true
   },
-  dataNasc: [{
+  dataNasc: {
     type: Date,
-  }],
-  cartaoCred: [{
+  },
+  cartaoCred: {
     type: Schema.Types.ObjectId,
     ref: 'CartaoDeCredito',
     required: true
-  }],
+  },
   planos: [{
     type: Schema.Types.ObjectId,
     ref: 'Plano',

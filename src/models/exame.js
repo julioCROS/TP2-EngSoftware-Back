@@ -14,30 +14,30 @@ const Exame = new Schema({
     type: Number,
     required: true
   },
-  altura: [{
+  altura: {
     type: Number,
     required: true
-  }],
-  pressaoArt: [{
+  },
+  pressaoArt: {
     type: String,
     required: true
-  }],
-  gorduraCorp: [{
+  },
+  gorduraCorp: {
     type: String,
     required: true
-  }],
-  massaMagra: [{
+  },
+  massaMagra: {
     type: String,
     required: true
-  }],
-  IMC: [{
+  },
+  IMC: {
     type: Number,
     required: true
-  }],
-  estaApto: [{
+  },
+  estaApto: {
     type: Boolean,
     required: true,
-  }],
+  },
 });
 
 module.exports = mongoose.model('Exame', Exame);
