@@ -13,7 +13,7 @@ exports.get = async (req, res) => {
 }
 
 exports.getById = async (req, res) => {
-  await Treino.findById(req.param.id)
+  await Treino.findById(req.params.id)
     .then(result => {
       res.status(200).json(result);
     }).catch(err => {

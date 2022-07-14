@@ -13,7 +13,7 @@ exports.get = async (req, res) => {
 }
 
 exports.getById = async (req, res) => {
-  await Aula.findById(req.param.id)
+  await Aula.findById(req.params.id)
     .then(result => {
       res.status(200).json(result);
     }).catch(err => {
