@@ -6,13 +6,18 @@ const Treino = new Schema({
     type: String,
     required: true
   },
+  aluno: {
+    type: Schema.Types.ObjectId,
+    ref: 'Aluno',
+    default: null
+  },
   descricao: {
     type: String,
     required: true
   },
   exercicios: [{
     type: Schema.Types.ObjectId,
-    ref: 'Exercicios',
+    ref: 'Exercicio',
     required: true
   }],
 });

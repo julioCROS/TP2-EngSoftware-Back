@@ -1,8 +1,11 @@
 const mongoose = require('mongoose');
 const Treino = mongoose.model('Treino');
+const Aluno = mongoose.model('Aluno');
 
 exports.get = async (req, res) => {
   await Treino.find()
+    .populate('exercicios')
+    .populate('aluno')
     .then(result => {
       res.status(200).json(result);
     }).catch(err => {
@@ -14,6 +17,8 @@ exports.get = async (req, res) => {
 
 exports.getById = async (req, res) => {
   await Treino.findById(req.params.id)
+    .populate('exercicios')
+    .populate('aluno')
     .then(result => {
       res.status(200).json(result);
     }).catch(err => {
@@ -24,7 +29,10 @@ exports.getById = async (req, res) => {
 }
 
 exports.post = async (req, res) => {
+  const aluno = await Aluno.find({ CPF: req.body.CPFTreino });
+  req.body.aluno = aluno[0]._id;
   const novoTreino = new Treino(req.body);
+
   await novoTreino.save()
     .then(result => {
       res.status(201).json(result);
