@@ -1,8 +1,6 @@
-<center>
-  
-![](./src/logo-cefet.png)
-
-</center>
+<p align="center">
+  <img width="300" height="300" src="src/logo-cefet.png">
+</p>
   <h1 align="center">Trabalho Prático Final de Engenharia de Software do CEFET-MG  </h1>
   <h1 align="center"> Academia Back-end</h1>
 <br />
