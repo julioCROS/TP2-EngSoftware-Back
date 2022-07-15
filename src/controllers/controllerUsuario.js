@@ -26,6 +26,7 @@ exports.getById = async (req, res) => {
 }
 
 exports.login = async (req, res) => {
+  console.debug(req)
   await Usuario.findOne({email:req.email, senha:req.senha})
       .then(async result => {
         if (result === null) {
