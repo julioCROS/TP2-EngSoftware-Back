@@ -27,7 +27,7 @@ exports.getById = async (req, res) => {
 
 exports.login = async (req, res) => {
   console.debug(req)
-  await Usuario.findOne({email:req.email, senha:req.senha})
+  await Usuario.findOne({email:req.data.email, senha:req.data.senha})
       .then(async result => {
         if (result === null) {
           res.status(500).json({
