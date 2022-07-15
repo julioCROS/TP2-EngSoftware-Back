@@ -31,7 +31,7 @@ exports.getById = async (req, res) => {
 }
 
 exports.post = async (req, res) => {
-  const aluno = await Aluno.find({ CPF: req.params.id });
+  const aluno = await Aluno.find({ CPF: req.body.CPFTreino });
   req.body.aluno = aluno[0]._id;
   const novoTreino = new Treino(req.body);
   await novoTreino.save()
