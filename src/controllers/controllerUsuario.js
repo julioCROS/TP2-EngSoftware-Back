@@ -25,17 +25,17 @@ exports.getById = async (req, res) => {
     });
 }
 
-exports.login = async (req, res) => {
-  await Usuario.findOne({email:req.body.email, senha:req.body.senha})
-      .then(async result => {
+exports.login = (req, res) => {
+  Usuario.findOne({email:req.body.email, senha:req.body.senha})
+      .then(result => {
         if (result === null) {
           res.status(500).json({
             message: 'Email e/ou senha inválidos'
           });
         }
         else {
-          const resultAluno = await Aluno.find({usuario: result._id})
-          const resultEmpregado = await Empregado.find({usuario: result._id})
+          const resultAluno = Aluno.find({usuario: result._id})
+          const resultEmpregado = Empregado.find({usuario: result._id})
           if (resultEmpregado.length > 0) result = {"id": resultEmpregado[0]._id, "tipo": resultEmpregado[0].cargo}
           if (resultAluno.length > 0) result = {"id": resultAluno[0]._id, "tipo": "aluno"}
           res.status(200).json(result);
