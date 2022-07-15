@@ -13,7 +13,7 @@ exports.get = async (req, res) => {
 }
 
 exports.getById = async (req, res) => {
-  await Exame.findById(req.params.id)
+  await Exame.find({ CPFAluno: req.params.id })
     .then(result => {
       res.status(200).json(result);
     }).catch(err => {
@@ -36,7 +36,7 @@ exports.post = async (req, res) => {
 }
 
 exports.put = async (req, res) => {
-  await Exame.findByIdAndUpdate(req.params.id, req.body)
+  await Exame.findOneAndUpdate({ CPFAluno: req.params.id }, req.body)
     .then(result => {
       res.status(200).json(req.body);
     }).catch(err => {
@@ -47,7 +47,7 @@ exports.put = async (req, res) => {
 }
 
 exports.delete = async (req, res) => {
-  await Exame.findByIdAndRemove(req.params.id)
+  await Exame.findOneAndRemove({ CPFAluno: req.params.id })
     .then(result => {
       res.status(200).json(result);
     }).catch(err => {

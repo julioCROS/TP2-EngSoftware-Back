@@ -3,8 +3,10 @@ const Aluno = mongoose.model('Aluno');
 
 exports.get = async (req, res) => {
   await Aluno.find()
+    .populate('usuario')
     .populate('planos')
     .populate('exames')
+    .populate('cartaoCred')
     .then(result => {
       res.status(200).json(result);
     }).catch(err => {
@@ -16,6 +18,7 @@ exports.get = async (req, res) => {
 
 exports.getById = async (req, res) => {
   await Aluno.findById(req.params.id)
+    .populate('usuario')
     .populate('planos')
     .populate('exames')
     .then(result => {
