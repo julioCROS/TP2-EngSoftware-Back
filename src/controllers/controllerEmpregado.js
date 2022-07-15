@@ -3,6 +3,7 @@ const Empregado = mongoose.model('Empregado');
 
 exports.get = async (req, res) => {
   await Empregado.find()
+  .populate('usuario')
     .then(result => {
       res.status(200).json(result);
     }).catch(err => {
@@ -14,6 +15,7 @@ exports.get = async (req, res) => {
 
 exports.getById = async (req, res) => {
   await Empregado.findById(req.params.id)
+    .populate('usuario')
     .then(result => {
       res.status(200).json(result);
     }).catch(err => {
