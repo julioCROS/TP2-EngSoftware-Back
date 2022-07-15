@@ -16,12 +16,14 @@ exports.get = async (req, res) => {
 }
 
 exports.getById = async (req, res) => {
-  await Treino.findById(req.params.id)
+  console.log("Procurando por ID...")
+  await Treino.find({ CPFTreino: req.params.id })
     .populate('exercicios')
     .populate('aluno')
     .then(result => {
       res.status(200).json(result);
     }).catch(err => {
+      console.log("CPF não encontrado!");
       res.status(500).json({
         message: err.message
       })
@@ -29,10 +31,9 @@ exports.getById = async (req, res) => {
 }
 
 exports.post = async (req, res) => {
-  const aluno = await Aluno.find({ CPF: req.body.CPFTreino });
+  const aluno = await Aluno.find({ CPF: req.params.id });
   req.body.aluno = aluno[0]._id;
   const novoTreino = new Treino(req.body);
-
   await novoTreino.save()
     .then(result => {
       res.status(201).json(result);
@@ -44,7 +45,7 @@ exports.post = async (req, res) => {
 }
 
 exports.put = async (req, res) => {
-  await Treino.findByIdAndUpdate(req.params.id, req.body)
+  await Treino.findOneAndUpdate({ CPFTreino: req.params.id }, req.body)
     .then(result => {
       res.status(200).json(req.body);
     }).catch(err => {
@@ -55,7 +56,7 @@ exports.put = async (req, res) => {
 }
 
 exports.delete = async (req, res) => {
-  await Treino.findByIdAndRemove(req.params.id)
+  await Treino.findOneAndRemove({ CPFTreino: req.params.id })
     .then(result => {
       res.status(200).json(result);
     }).catch(err => {
