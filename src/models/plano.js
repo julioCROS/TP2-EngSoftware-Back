@@ -7,12 +7,12 @@ const Plano = new Schema({
     required: true
   },
   preco: {
-    type: Number,
-    required: true
+    type: String,
+    required: false
   },
   descricao: {
     type: String,
-    required: true
+    required: false
   },
   aulas: [{
     type: Schema.Types.ObjectId,
